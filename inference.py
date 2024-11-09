@@ -208,20 +208,20 @@ def create_argparser():
 
     return parser, parser_up
 
-image = gr.outputs.Image(type="pil", label="Sampled results")
+image = gr.Image(type="pil", label="Sampled results")
 css = ".output-image{height: 528px !important} .output-carousel .output-image{height:272px !important} a{text-decoration: underline}"
 demo = gr.Interface(fn=run, inputs=[
-    gr.inputs.Image(type="pil", label="Input Sketch" ) ,
+    gr.Image(type="pil", label="Input Sketch" ) ,
     # gr.Image(image_mode="L", source="canvas", type="pil", shape=(256,256), invert_colors=False, tool="editor"),
-    gr.inputs.Radio(label="Input Mode - The type of your input", choices=["mask", "sketch"],default="sketch"),
-    gr.inputs.Slider(label="sample_c - The strength of classifier-free guidance",default=1.4, minimum=1.0, maximum=2.0),
-    gr.inputs.Slider(label="Number of samples - How many samples you wish to generate", default=4, step=1, minimum=1, maximum=16),
-    gr.inputs.Slider(label="Number of Steps - How many steps you want to use", default=100, step=10, minimum=50, maximum=1000),
+    gr.Radio(label="Input Mode - The type of your input", choices=["mask", "sketch"],value="sketch"),
+    gr.Slider(label="sample_c - The strength of classifier-free guidance", value=1.4, minimum=1.0, maximum=2.0),
+    gr.Slider(label="Number of samples - How many samples you wish to generate", value=4, step=1, minimum=1, maximum=16),
+    gr.Slider(label="Number of Steps - How many steps you want to use", value=100, step=10, minimum=50, maximum=1000),
     ], 
     outputs=[image],
     css=css,
     title="Generate images from sketches with PITI",
     description="<div>By uploading a sketch map or a semantic map and pressing submit, you can generate images based on your input.</div>")
    
-demo.launch(enable_queue=True)
+demo.launch()
  
