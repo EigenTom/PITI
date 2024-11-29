@@ -40,8 +40,10 @@ def run(image, mode, sample_c=1.3,  num_samples=3, sample_step=100):
     elif mode == 'mask':
         args.mode = 'coco'
         args_up.mode = 'coco'
-        args.model_path = './ckpt/base_mask.pt'
-        args.sr_model_path = './ckpt/upsample_mask.pt'
+        args.model_path = '/home/axton/axton-workspace/csc2125/model_weights/piti_weights/base_mask.pt'
+        args.sr_model_path = '/home/axton/axton-workspace/csc2125/model_weights/piti_weights/upsample_mask.pt'
+        # args.model_path = './ckpt/base_mask.pt'
+        # args.sr_model_path = './ckpt/upsample_mask.pt'
 
 
     args.val_data_dir = image
